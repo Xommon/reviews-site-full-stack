@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+	<title>Reviews of Canadian Cities</title>
+	<link rel="stylesheet" type="text/css" href="./css/layout.css">
+<!-- 	<link rel="stylesheet" href="./css/style.css"> -->
+</head>
+
+<body>
+	<h1>Categories</h1>
+	<article th:each="category: ${categories}">
+		<a th:href="@{category(id=${category.id})}" th:text="${category.name}"></a>
+	</article>
+
+</body>
+</html>

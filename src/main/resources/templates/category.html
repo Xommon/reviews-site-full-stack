@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+	<title>Category</title>
+	<link rel="stylesheet" type="text/css" href="./css/layout.css">
+	<!-- <link rel="stylesheet" href="./style.css"> -->
+</head>
+
+<body>
+	<container>
+	<a href="http://localhost:8080/categories">Home</a>
+	<h1 th:text="${category.name}"></h1>
+	<article th:each="review : ${category.reviews}">
+		<div class="body">
+			<h2 th:text="${review.title}"></h2>
+		</div>
+		<img th:src="${review.imageUrl}" height="400"
+		alt="photo not displayed" />
+		<p th:text="${review.content}"></p>
+	</article>
+	<a href="http://localhost:8080/categories">Home</a>
+</container>
+</body>
+</html>

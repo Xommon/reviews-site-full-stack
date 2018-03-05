@@ -12,6 +12,7 @@ public class Review {
 	private long id;
 	private String title;
 	private String content;
+	private String imageUrl;
 	
 	@ManyToOne
 	private Category category;
@@ -32,14 +33,19 @@ public class Review {
 		return content;
 	}
 	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	
 	@SuppressWarnings("unused")
 	private Review() {
 	}
 	
-	public Review(String title, Category category, String content) {
+	public Review(String title, Category category, String content, String imageUrl) {
 		this.title = title;
 		this.category = category;
 		this.content = content;
+		this.imageUrl = imageUrl;
 	}
 	
 	@Override
