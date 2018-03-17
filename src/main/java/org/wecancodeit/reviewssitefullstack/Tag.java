@@ -5,36 +5,38 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Category {
+public class Tag {
+
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
+	private String description;
 
-	@OneToMany(mappedBy = "category")
+	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
-
-	public long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
 
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
 
-	@SuppressWarnings("unused")
-	private Category() {
+	public long getId() {
+		return id;
 	}
 
-	public Category(String name) {
-		this.name = name;
+	public String getDescription() {
+		return description;
+	}
+
+	public Tag(String description) {
+		this.description = description;
+	}
+
+	@SuppressWarnings("unused")
+	private Tag() {
+
 	}
 
 	@Override
@@ -47,11 +49,9 @@ public class Category {
 		if (this == obj) {
 			return true;
 		}
-
 		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
-
-		return id == ((Category) obj).id;
+		return id == ((Tag) obj).id;
 	}
 }

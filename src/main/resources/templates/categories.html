@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head lang="en">
-	<title>Reviews of Canadian Cities</title>
-	<link rel="stylesheet" type="text/css" href="./css/layout.css">
-<!-- 	<link rel="stylesheet" href="./css/style.css"> -->
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+
+<title>Reviews of Canadian Cities</title>
+<link rel="stylesheet" href="/css/layout.css"></link>
+<link rel="stylesheet" href="./css/style.css"></link>
 </head>
 
 <body>
@@ -12,6 +16,5 @@
 	<article th:each="category: ${categories}">
 		<a th:href="@{category(id=${category.id})}" th:text="${category.name}"></a>
 	</article>
-
 </body>
 </html>

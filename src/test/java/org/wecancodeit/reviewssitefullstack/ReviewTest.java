@@ -31,4 +31,10 @@ public class ReviewTest {
 		String check = review.getContent();
 		assertEquals("Content",check);
 	}
+	
+//	@Test
+//	public void shouldSaveAndLoadTag() {
+//		Tag testTag = new Tag("East");
+//		testTag = tagRepo.save(testTag);
+//	}
 }

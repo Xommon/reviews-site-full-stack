@@ -20,4 +20,10 @@ public class CategoryTest {
 		assertEquals("Name", check);
 	}
 	
+//	@Test
+//	public void shouldSaveAndLoadTag() {
+//		Tag testTag = new Tag("East");
+//		testTag = tagRepo.save(testTag);
+//		Reivew testReview = new Review("", "", "", "", testTag);
+//	}
 }

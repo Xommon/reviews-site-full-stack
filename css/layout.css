@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --grid-gap: 30px;
+}
+
+header {grid-area: header;}
+main {grid-area: main;}
+footer {grid-area: footer;}
+
+.container{
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr 250px 250px 250px 250px 1fr;
+	grid-template-rows: 50px 1fr 50px;
+		grid-template-areas: 
+	". header header header header ."
+	". sidebar main main main ."
+	". footer footer footer footer ."
+	;
+}

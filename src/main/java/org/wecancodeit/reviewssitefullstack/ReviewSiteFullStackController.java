@@ -9,34 +9,44 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReviewSiteFullStackController {
-	
+
 	@Resource
 	CategoryRepository categoryRepo;
-	
+
 	@Resource
 	ReviewRepository reviewRepo;
-	
+
+	@Resource
+	TagRepository tagRepo;
+
 	@RequestMapping(value = "categories")
 	public String getAllCategories(Model model) {
-		model.addAttribute("categories",categoryRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
 		return "categories";
 	}
-	
+
 	@RequestMapping(value = "category")
 	public String getReviewListofCategories(@RequestParam Long id, Model model) {
-		model.addAttribute("category",categoryRepo.findOne(id));
+		model.addAttribute("category", categoryRepo.findOne(id));
 		return "category";
 	}
-	
+
 	@RequestMapping(value = "reviews")
 	public String getAllReviews(Model model) {
-		model.addAttribute("reviews",reviewRepo.findAll());
+		model.addAttribute("reviews", reviewRepo.findAll());
 		return "reviews";
 	}
-	
+
 	@RequestMapping(value = "review")
 	public String getCategoryListofReviews(@RequestParam Long id, Model model) {
-		model.addAttribute("review",reviewRepo.findOne(id));
+		model.addAttribute("review", reviewRepo.findOne(id));
+		model.addAttribute("tagModel", tagRepo.findAllByReviews(reviewRepo.findOne(id)));
 		return "review";
+	}
+
+	@RequestMapping(value = "tags")
+	public String getAllTags(Model model) {
+		model.addAttribute("tagsModel", tagRepo.findAll());
+		return "tagsView";
 	}
 }

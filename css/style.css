@@ -1,0 +1,7 @@
+* {
+	font: 700 18px "franklin gothic", sans-serif;
+}
+
+.container {
+	background-image: url('../images/background.jpg');
+}
