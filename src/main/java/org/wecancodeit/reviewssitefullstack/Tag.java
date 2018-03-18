@@ -1,6 +1,8 @@
 package org.wecancodeit.reviewssitefullstack;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,8 +32,9 @@ public class Tag {
 		return description;
 	}
 
-	public Tag(String description) {
+	public Tag(String description, Review... reviews) {
 		this.description = description;
+		this.reviews = new HashSet<>(Arrays.asList(reviews));
 	}
 
 	@SuppressWarnings("unused")

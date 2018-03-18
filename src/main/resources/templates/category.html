@@ -21,6 +21,7 @@
 			Tagged: <a th:text="${tag.description}">, </a>
 		</div>
 
+		<!-- Code For Comments -->
 		<section th:each="comment: ${review.comments}">
 			<p th:text="${comment.content}"></p>
 		</section>
@@ -34,6 +35,23 @@
 
 				<button type="submit" th:formaction="@{/add-comment}">Submit
 					Comment</button>
+			</div>
+		</form>
+		
+		<!-- Code For Tags -->
+		<section th:each="tag: ${review.tags}">
+			<p th:text="${tag.description}"></p>
+		</section>
+
+		<form method="post">
+			<div>
+				<label>Tag this Post:</label> <input type="text" name="description"></input>
+				<div class="add-tag-reviewId">
+					<input type="hidden" th:value="${review.id}" name="stringId"/>
+				</div>
+
+				<button type="submit" th:formaction="@{/add-tag}">Submit
+					Tag</button>
 			</div>
 		</form>
 	</article>

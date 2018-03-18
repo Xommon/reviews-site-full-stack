@@ -53,6 +53,16 @@ public class ReviewSiteFullStackController {
 		return "tagsView";
 	}
 
+	@RequestMapping(value = "/add-tag")
+	public String addATag(String stringId, String description) {
+		Long id = Long.parseLong(stringId);
+		Review review = reviewRepo.findOne(id);
+		Tag tag = new Tag(description, review);
+		tag = tagRepo.save(tag);
+		return "redirect:/review?id=";
+
+	}
+
 	@RequestMapping(value = "/add-comment")
 	public String addAComment(String stringId, String content) {
 		Long id = Long.parseLong(stringId);
