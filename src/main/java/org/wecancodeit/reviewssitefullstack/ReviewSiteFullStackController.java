@@ -19,34 +19,46 @@ public class ReviewSiteFullStackController {
 	@Resource
 	TagRepository tagRepo;
 
-	@RequestMapping(value = "categories")
+	@Resource
+	CommentRepository commentRepo;
+
+	@RequestMapping(value = "/categories")
 	public String getAllCategories(Model model) {
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "categories";
 	}
 
-	@RequestMapping(value = "category")
+	@RequestMapping(value = "/category")
 	public String getReviewListofCategories(@RequestParam Long id, Model model) {
 		model.addAttribute("category", categoryRepo.findOne(id));
 		return "category";
 	}
 
-	@RequestMapping(value = "reviews")
+	@RequestMapping(value = "/reviews")
 	public String getAllReviews(Model model) {
 		model.addAttribute("reviews", reviewRepo.findAll());
 		return "reviews";
 	}
 
-	@RequestMapping(value = "review")
+	@RequestMapping(value = "/review")
 	public String getCategoryListofReviews(@RequestParam Long id, Model model) {
 		model.addAttribute("review", reviewRepo.findOne(id));
 		model.addAttribute("tagModel", tagRepo.findAllByReviews(reviewRepo.findOne(id)));
 		return "review";
 	}
 
-	@RequestMapping(value = "tags")
+	@RequestMapping(value = "/tags")
 	public String getAllTags(Model model) {
 		model.addAttribute("tagsModel", tagRepo.findAll());
 		return "tagsView";
+	}
+
+	@RequestMapping(value = "/add-comment")
+	public String addAComment(String stringId, String content) {
+		Long id = Long.parseLong(stringId);
+		Review review = reviewRepo.findOne(id);
+		Comment comment = new Comment(content, review);
+		comment = commentRepo.save(comment);
+		return "redirect:/category?id=" + stringId;
 	}
 }

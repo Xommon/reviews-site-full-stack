@@ -11,7 +11,8 @@
 	<a href="http://localhost:8080/categories">Home</a>
 	<article>
 		<div th:each="tag: ${tagsModel}">
-			<p>Tagged: </p><a th:text="${tag.description}">, </a>
+			
+			<a th:text="${tag.description}">, </a>
 		</div>
 	</article>
 	<a href="http://localhost:8080/categories">Home</a>

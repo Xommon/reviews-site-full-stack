@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import static java.util.Arrays.asList;
 
 @Entity
@@ -21,6 +23,9 @@ public class Review {
 
 	@ManyToMany
 	Collection<Tag> tags;
+
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
 
 	@ManyToOne
 	private Category category;
@@ -47,6 +52,10 @@ public class Review {
 
 	public Collection<Tag> getTags() {
 		return tags;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
 	}
 
 	@SuppressWarnings("unused")
